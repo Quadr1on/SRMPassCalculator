@@ -10,7 +10,7 @@ def pass_calculator(marks):
         pass_marks = 1.75 * diff
         return {"pass_marks": round(pass_marks, 2), "passed": False}
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
@@ -21,5 +21,9 @@ def calculate():
     result = pass_calculator(marks)
     return jsonify(result)
 
+# This is for local development
 if __name__ == '__main__':
     app.run(debug=True)
+    
+# Vercel requires this variable to be named "app"
+# It ensures that the Flask app is properly exposed for serverless functions
