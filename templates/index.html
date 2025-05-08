@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRM Pass Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="app-header">
+            <h1>SRM Pass Calculator</h1>
+        </div>
+        
+        <div class="calculator-box">
+            <div class="input-group">
+                <label for="marks">Enter your marks out of 60:</label>
+                <input type="number" id="marks" placeholder="Current marks" min="0" max="60" step="0.01">
+            </div>
+            
+            <button id="calculate-btn">Calculate</button>
+            
+            <div class="result-container" id="result-container">
+                <!-- Results will appear here -->
+            </div>
+        </div>
+        
+        <footer>
+            <p>Made with ❤️ for SRM students</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
