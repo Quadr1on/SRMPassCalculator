@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -21,9 +22,6 @@ def calculate():
     result = pass_calculator(marks)
     return jsonify(result)
 
-# This is for local development
+# This is only used when running the app locally
 if __name__ == '__main__':
     app.run(debug=True)
-    
-# Vercel requires this variable to be named "app"
-# It ensures that the Flask app is properly exposed for serverless functions

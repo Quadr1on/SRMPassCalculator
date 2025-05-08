@@ -5,7 +5,12 @@ import sys
 # Add the parent directory to sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from app import app as application
+# Import the flask app from app.py
+from app import app
 
-# Vercel requires this "app" variable
-app = application
+# Vercel requires a handler function
+def handler(request):
+    return app(request)
+
+# This makes the app available to Vercel serverless functions
+app = app
