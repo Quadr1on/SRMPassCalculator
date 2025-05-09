@@ -31,20 +31,61 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
+            let resultMessage = '';
+            
             if (data.passed) {
-                showResult(data.message);
+                resultMessage = `<div class="result-message">${data.message}</div>`;
             } else {
                 if(data.pass_marks > 70){
-                    showResult('Can\'t pass now-aim higher next time!')
-                }else{
-                    showResult(`You need <span class="highlight">${data.pass_marks}</span> marks more in end sem to pass this subject.`);
+                    resultMessage = '<div class="result-message">Can\'t pass now-aim higher next time!</div>';
+                } else {
+                    resultMessage = `<div class="result-message">You need <span class="highlight">${data.pass_marks}</span> marks more in end sem to pass this subject.</div>`;
                 }
             }
+            
+            // Add grade table if there are grades to achieve and pass marks isn't greater than 70
+            if (data.grade_marks && (!data.pass_marks || data.pass_marks <= 70)) {
+                resultMessage += createGradeTable(data.grade_marks);
+            }
+            
+            resultContainer.innerHTML = resultMessage;
+            resultContainer.classList.add('active');
         })
         .catch(error => {
             console.error('Error:', error);
             showResult('An error occurred. Please try again.');
         });
+    }
+    
+    function createGradeTable(gradeMarks) {
+        // Create table HTML
+        let tableHtml = `
+        <div class="grade-table-container">
+            <h3 class="grade-table-title">Marks needed for higher grades:</h3>
+            <table class="grade-table">
+                <thead>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Min Marks Needed</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+        
+        // Add rows for each grade
+        Object.entries(gradeMarks).forEach(([grade, marks]) => {
+            tableHtml += `
+                <tr>
+                    <td>${grade}</td>
+                    <td>${marks}</td>
+                </tr>`;
+        });
+        
+        tableHtml += `
+                </tbody>
+            </table>
+        </div>`;
+        
+        return tableHtml;
     }
     
     function showResult(message) {

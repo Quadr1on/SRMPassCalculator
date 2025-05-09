@@ -109,11 +109,51 @@ button:hover {
 .result-message {
     font-size: 18px;
     line-height: 1.5;
+    margin-bottom: 20px;
 }
 
 .highlight {
     font-weight: 700;
     color: var(--accent-color);
+}
+
+/* Grade Table Styles */
+.grade-table-container {
+    margin-top: 24px;
+}
+
+.grade-table-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.grade-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.grade-table thead {
+    background-color: var(--accent-color);
+    color: #121212;
+}
+
+.grade-table th,
+.grade-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #333;
+}
+
+.grade-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.grade-table tbody tr:hover {
+    background-color: rgba(76, 175, 80, 0.05);
 }
 
 footer {
