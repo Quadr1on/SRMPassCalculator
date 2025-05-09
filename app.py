@@ -20,7 +20,7 @@ def pass_calculator(marks):
         # Calculate marks needed for each grade
         grade_marks_needed = {}
         for grade, threshold in grade_thresholds.items():
-            marks_needed = (threshold - marks) * 1.75
+            marks_needed = (threshold - marks) * 1.875
             # Only include grades where additional marks are needed
             if marks_needed > 0:
                 grade_marks_needed[grade] = round(marks_needed, 2)
@@ -29,12 +29,12 @@ def pass_calculator(marks):
         return result
     else:
         diff = 50 - marks
-        pass_marks = 1.75 * diff
+        pass_marks = 1.875 * diff
         
         # Calculate marks needed for each grade
         grade_marks_needed = {}
         for grade, threshold in grade_thresholds.items():
-            marks_needed = (threshold - marks) * 1.75
+            marks_needed = (threshold - marks) * 1.875
             grade_marks_needed[grade] = round(marks_needed, 2)
         
         return {"pass_marks": round(pass_marks, 2), "passed": False, "grade_marks": grade_marks_needed}
