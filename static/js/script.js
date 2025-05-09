@@ -34,7 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.passed) {
                 showResult(data.message);
             } else {
-                showResult(`You need <span class="highlight">${data.pass_marks}</span> marks more to pass the exam.`);
+                if(data.pass_marks > 70){
+                    showResult('Can\'t pass now-aim higher next time!')
+                }else{
+                    showResult(`You need <span class="highlight">${data.pass_marks}</span> marks more in end sem to pass this subject.`);
+                }
             }
         })
         .catch(error => {
