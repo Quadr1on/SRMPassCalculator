@@ -14,7 +14,7 @@ def pass_calculator(marks):
     }
     
     # Check if already passed
-    if marks > 50:
+    if marks >= 50:
         result = {"message": "Chillout you have already passed! Enjoy :)", "passed": True}
         
         # Calculate marks needed for each grade
