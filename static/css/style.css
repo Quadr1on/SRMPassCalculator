@@ -156,6 +156,12 @@ button:hover {
     background-color: rgba(76, 175, 80, 0.05);
 }
 
+.condition{
+    color: #949393;
+    font-size: smaller;
+    margin-top: 5px;
+}
+
 footer {
     text-align: center;
     margin-top: 30px;

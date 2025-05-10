@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create table HTML
         let tableHtml = `
         <div class="grade-table-container">
-            <h3 class="grade-table-title">Marks needed for higher grades:</h3>
+            <h3 class="grade-table-title">Marks needed for higher grades*:</h3>
             <table class="grade-table">
                 <thead>
                     <tr>
@@ -71,18 +71,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 </thead>
                 <tbody>`;
         
-        // Add rows for each grade
-        Object.entries(gradeMarks).forEach(([grade, marks]) => {
-            tableHtml += `
+        // Define the correct grade order
+        const gradeOrder = ['O', 'A+', 'A', 'B+', 'B', 'C'];
+        
+        // Add rows for each grade in the correct order
+        gradeOrder.forEach(grade => {
+            if (grade in gradeMarks) {
+                const marks = gradeMarks[grade];
+                // Show "N/A" or similar for very high marks requirements
+                const displayMarks = marks > 70 ? "Not possible" : marks;
+                
+                tableHtml += `
                 <tr>
                     <td>${grade}</td>
-                    <td>${marks}</td>
+                    <td>${displayMarks}</td>
                 </tr>`;
+            }
         });
         
         tableHtml += `
                 </tbody>
             </table>
+            <span class="condition">*these are just an assumed marks, please dont trust them blindly</span>
         </div>`;
         
         return tableHtml;
