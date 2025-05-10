@@ -92,7 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
         tableHtml += `
                 </tbody>
             </table>
-            <span class="condition">*these are just an assumed marks, please dont trust them blindly</span>
+            <span class="condition">*These marks are only assumed estimates, so please don't rely on them completely. <b>Not possible</b> means calculated marks for that grade<b> > 75</b> i.e highest marks possible for that exam</span>
+            
         </div>`;
         
         return tableHtml;
