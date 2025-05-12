@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (grade in gradeMarks) {
                 const marks = gradeMarks[grade];
                 // Show "N/A" or similar for very high marks requirements
-                const displayMarks = marks > 70 ? "Not possible" : marks;
+                const displayMarks = marks > 75 ? "Not possible" : marks;
                 
                 tableHtml += `
                 <tr>
